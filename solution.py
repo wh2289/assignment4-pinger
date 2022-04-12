@@ -5,21 +5,18 @@ import struct
 import time
 import select
 import binascii
-# Should use stdev
-
 ICMP_ECHO_REQUEST = 8
 
 
 def checksum(string):
+    string = bytearray(string)
     csum = 0
     countTo = (len(string) // 2) * 2
-    count = 0
 
-    while count < countTo:
+    for count in range(0, countTo, 2):
         thisVal = (string[count + 1]) * 256 + (string[count])
         csum += thisVal
         csum &= 0xffffffff
-        count += 2
 
     if countTo < len(string):
         csum += (string[len(string) - 1])
@@ -41,18 +38,23 @@ def receiveOnePing(mySocket, ID, timeout, destAddr):
         startedSelect = time.time()
         whatReady = select.select([mySocket], [], [], timeLeft)
         howLongInSelect = (time.time() - startedSelect)
-        if whatReady[0] == []:  # Timeout
+        if whatReady[0] == []:
             return "Request timed out."
 
         timeReceived = time.time()
         recPacket, addr = mySocket.recvfrom(1024)
 
-        # Fill in start
 
-        # Fetch the ICMP header from the IP packet
+        icmpHeader = recPacket[20:28]
+        icmpType, code, mychecksum, packetID, sequence = struct.unpack("bbHHh", icmpHeader)
 
-        # Fill in end
+        if type != 8 and packetID == ID:
+            bytesInDouble = struct.calcsize("d")
+            timeSent = struct.unpack("d", recPacket[28:28 + bytesInDouble])[0]
+            return timeReceived - timeSent
+
         timeLeft = timeLeft - howLongInSelect
+
         if timeLeft <= 0:
             return "Request timed out."
 
