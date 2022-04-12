@@ -98,3 +98,6 @@ def ping(host, timeout=1):
         loop += 1
 
     return delay
+
+print("Ping to Europe")
+ping("95.142.107.181")
