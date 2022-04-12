@@ -87,6 +87,7 @@ def doOnePing(destAddr, timeout):
 
 
 def ping(host, timeout=1):
+    vars = 0
     dest = gethostbyname(host)
     print("Pinging " + dest + " using Python:")
     print("")
