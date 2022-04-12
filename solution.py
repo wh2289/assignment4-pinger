@@ -81,6 +81,7 @@ def doOnePing(destAddr, timeout):
     myID = os.getpid() & 0xFFFF
     sendOnePing(mySocket, destAddr, myID)
     delay = receiveOnePing(mySocket, myID, timeout, destAddr)
+
     mySocket.close()
     return delay
 
@@ -92,16 +93,11 @@ def ping(host, timeout=1):
 
     loop = 0
     while loop < 10:
-        delay = doOnePing(dest,timeout)
+        delay = doOnePing(dest, timeout)
         print(delay)
         time.sleep(1)
         loop += 1
-
     return delay
-
-print("Ping to Europe")
-ping("95.142.107.181")
-
 
 if __name__ == '_main_':
     ping("google.co.il")
