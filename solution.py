@@ -91,13 +91,10 @@ def ping(host, timeout=1):
     print("Pinging " + dest + " using Python:")
     print("")
 
-    loop = 0
-    while loop < 10:
+    for i in range(0,4):
         delay = doOnePing(dest, timeout)
         print(delay)
         time.sleep(1)
-        loop += 1
-    return delay
 
     return vars
 
