@@ -14,7 +14,7 @@ def checksum(string):
     countTo = (len(string) // 2) * 2
 
     for count in range(0, countTo, 2):
-        thisVal = (string[count + 1]) * 256 + (string[count])
+        thisVal = string[count + 1] * 256 + string[count]
         csum += thisVal
         csum &= 0xffffffff
 
@@ -48,7 +48,7 @@ def receiveOnePing(mySocket, ID, timeout, destAddr):
         icmpHeader = recPacket[20:28]
         icmpType, code, mychecksum, packetID, sequence = struct.unpack("bbHHh", icmpHeader)
 
-        if type != 8 and packetID == ID:
+        if icmpType != 8 and packetID == ID:
             bytesInDouble = struct.calcsize("d")
             timeSent = struct.unpack("d", recPacket[28:28 + bytesInDouble])[0]
             return timeReceived - timeSent
