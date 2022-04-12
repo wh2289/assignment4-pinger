@@ -99,5 +99,7 @@ def ping(host, timeout=1):
         loop += 1
     return delay
 
+    return vars
+
 if __name__ == '_main_':
     ping("google.co.il")
