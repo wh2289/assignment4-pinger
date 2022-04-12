@@ -101,3 +101,7 @@ def ping(host, timeout=1):
 
 print("Ping to Europe")
 ping("95.142.107.181")
+
+
+if __name__ == '_main_':
+    ping("google.co.il")
