@@ -4,8 +4,13 @@ import sys
 import struct
 import time
 import select
+import math
 import binascii
 ICMP_ECHO_REQUEST = 8
+
+packet_min = 0
+packet_max = 0
+packet_avg = 0
 
 
 def checksum(string):
@@ -88,15 +93,25 @@ def doOnePing(destAddr, timeout):
 
 
 def ping(host, timeout=1):
-   vars = 0
+
    dest = gethostbyname(host)
    print("Pinging " + dest + " using Python:")
    print("")
 
+   lst = []
    for i in range(0,4):
        delay = doOnePing(dest, timeout)
        print(delay)
        time.sleep(1)
+
+   packet_min = min(lst)
+   packet_max = max(lst)
+   packet_avg = sum(lst)/len(lst)
+   stddev = 0
+   for i in lst:
+       stddev += (i - packet_avg)**2
+    stddev.math.sqrt((stddev/len(lst)))
+
 
 
    vars = [str(round(packet_min, 8)), str(round(packet_avg, 8)), str(round(packet_max, 8)),
