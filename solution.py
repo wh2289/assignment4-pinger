@@ -100,12 +100,12 @@ def ping(host, timeout=1):
     print("Pinging " + dest + " using Python:")
     print("")
 
-    lst = []
+    
     for i in range(0, 4):
         delay = doOnePing(dest, timeout)
         print(delay)
         time.sleep(1)
-
+    lst = []
     packet_min = min(lst)
     packet_max = max(lst)
     packet_avg = sum(lst) / len(lst)
