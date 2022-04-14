@@ -102,7 +102,7 @@ def ping(host, timeout=1):
    for i in range(0,4):
        delay = doOnePing(dest, timeout)
        print(delay)
-       lst.append(round(delay[0]*1000,8)
+       lst.append(round(delay[0]*1000,8))
        time.sleep(1)
 
    packet_min = min(lst)
