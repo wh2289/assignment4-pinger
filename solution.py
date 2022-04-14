@@ -1,3 +1,4 @@
+from socket import *
 import os
 import sys
 import struct
@@ -17,12 +18,12 @@ def checksum(str):
     while count < countTo:
         thisVal = ord(str[count + 1]) * 256 + ord(str[count])
         csum = csum + thisVal
-        csum = csum & 0xffffffffL
+        csum = csum & 0xffffffff
         count = count + 2
 
     if countTo < len(str):
         csum = csum + ord(str[len(str) - 1])
-        csum = csum & 0xffffffffL
+        csum = csum & 0xffffffff
 
     csum = (csum >> 16) + (csum & 0xffff)
     csum = csum + (csum >> 16)
