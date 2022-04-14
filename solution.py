@@ -9,25 +9,26 @@ ICMP_ECHO_REQUEST = 8
 
 
 def checksum(string):
-   string = bytearray(string)
-   csum = 0
-   countTo = (len(string) // 2) * 2
+    csum = 0
+    countTo = (len(string) // 2) * 2
+    count = 0
 
-   for count in range(0, countTo, 2):
-       thisVal = string[count + 1] * 256 + string[count]
-       csum += thisVal
-       csum &= 0xffffffff
+    while count < countTo:
+        thisVal = (string[count + 1]) * 256 + (string[count])
+        csum += thisVal
+        csum &= 0xffffffff
+        count += 2
 
-   if countTo < len(string):
-       csum += (string[len(string) - 1])
-       csum &= 0xffffffff
+    if countTo < len(string):
+        csum += (string[len(string) - 1])
+        csum &= 0xffffffff
 
-   csum = (csum >> 16) + (csum & 0xffff)
-   csum = csum + (csum >> 16)
-   answer = ~csum
-   answer = answer & 0xffff
-   answer = answer >> 8 | (answer << 8 & 0xff00)
-   return answer
+    csum = (csum >> 16) + (csum & 0xffff)
+    csum = csum + (csum >> 16)
+    answer = ~csum
+    answer = answer & 0xffff
+    answer = answer >> 8 | (answer << 8 & 0xff00)
+    return answer
 
 
 
