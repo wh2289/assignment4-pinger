@@ -106,11 +106,12 @@ def ping(host, timeout=1):
         print(delay)
         time.sleep(1)
     lst = []
+    lst.append(round(delay[0] * 1000, 8))
     packet_min = min(lst)
     packet_max = max(lst)
     packet_avg = sum(lst) / len(lst)
     statistics.stdev(lst)
-    lst.append(round(delay[0] * 1000, 8))
+    statistics.stdev(lst)
 
     for i in lst:
         stdev += (i - packet_avg) ** 2
