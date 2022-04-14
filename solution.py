@@ -1,4 +1,4 @@
-import socket
+from socket import *
 import os
 import sys
 import struct
