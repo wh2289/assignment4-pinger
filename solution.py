@@ -100,7 +100,7 @@ def ping(host, timeout=1):
     print("Pinging " + dest + " using Python:")
     print("")
 
-    
+
     for i in range(0, 4):
         delay = doOnePing(dest, timeout)
         print(delay)
@@ -109,12 +109,12 @@ def ping(host, timeout=1):
     packet_min = min(lst)
     packet_max = max(lst)
     packet_avg = sum(lst) / len(lst)
-    stdev = 0
+    statistics.stdev(lst, packet_avg)
     lst.append(round(delay[0] * 1000, 8))
+    
     for i in lst:
         stdev += (i - packet_avg) ** 2
         stdev.math.sqrt((stddev / len(lst)))
-        statistics.stdev(lst, packet_avg)
         vars = [str(round(packet_min, 8)), str(round(packet_avg, 8)), str(round(packet_max, 8)),
                 str(round(stdev(stdev_var), 8))]
     return vars
