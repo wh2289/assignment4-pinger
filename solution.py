@@ -117,6 +117,7 @@ def ping(host, timeout=1):
        stdev += (i - packet_avg)**2
        stdev.math.sqrt((stddev/len(lst)))
        lst.append(round(delay[0] * 1000, 8))
+       statistics.stdev(lst, packet_avg)
        #vars = [str(round(packet_min, 8)), str(round(packet_avg, 8)), str(round(packet_max, 8)),
             #str(round(stdev(stdev_var), 8))]
    return vars
