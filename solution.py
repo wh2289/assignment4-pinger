@@ -148,4 +148,5 @@ def ping(host, timeout=1):
                 'round-trip min/avg/max {:.3f}/{:.3f}/{:.3f} ms'.format(rtt_min, rtt_sum / rtt_cnt, rtt_max)
 
 
-ping(sys.argv[1])
+if __name__ == '_main_':
+   ping("google.co.il")
