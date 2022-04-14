@@ -113,8 +113,8 @@ def ping(host, timeout=1):
        stddev += (i - packet_avg)**2
        stddev.math.sqrt((stddev/len(lst)))
 
-    vars = [str(round(packet_min, 8)), str(round(packet_avg, 8)), str(round(packet_max, 8)),
-           str(round(stdev(stdev_var), 8))]
+       vars = [str(round(packet_min, 8)), str(round(packet_avg, 8)), str(round(packet_max, 8)),
+            str(round(stdev(stdev_var), 8))]
 
    return vars
 
