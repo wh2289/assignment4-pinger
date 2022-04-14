@@ -5,6 +5,7 @@ import struct
 import time
 import select
 import math
+import statistics
 import binascii
 ICMP_ECHO_REQUEST = 8
 
@@ -115,8 +116,8 @@ def ping(host, timeout=1):
    for i in lst:
        stdev += (i - packet_avg)**2
        stdev.math.sqrt((stddev/len(lst)))
-       vars = [str(round(packet_min, 8)), str(round(packet_avg, 8)), str(round(packet_max, 8)),
-            str(round(stdev(stdev_var), 8))]
+       #vars = [str(round(packet_min, 8)), str(round(packet_avg, 8)), str(round(packet_max, 8)),
+            #str(round(stdev(stdev_var), 8))]
    return vars
 
 if __name__ == '_main_':
