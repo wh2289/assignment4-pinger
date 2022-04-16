@@ -98,7 +98,8 @@ def ping(host, timeout=1):
     packet_max = 0
     packet_avg = 0
     stdev_var = 0
-
+    delay = 0
+    
     lst = [delay]
 
     for i in range(0, 4):
