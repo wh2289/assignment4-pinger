@@ -98,8 +98,7 @@ def ping(host, timeout=1):
     print("Pinging " + dest + " using Python:")
     print("")
 
-
-
+    delay = 0
     lst = [delay]
 
     for i in range(0, 4):
@@ -111,8 +110,6 @@ def ping(host, timeout=1):
     packet_max = max(lst)
     packet_avg = sum(lst) / len(lst)
     stdev = statistics.stdev(lst)
-
-
 
     return vars
 
