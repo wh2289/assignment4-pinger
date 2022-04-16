@@ -99,8 +99,10 @@ def ping(host, timeout=1):
     packet_avg = 0
     stdev_var = 0
     delay = 0
-    
+
     lst = [delay]
+
+    stdev = statistics.stdev(lst)
 
     for i in range(0, 4):
         delay = doOnePing(dest, timeout)
