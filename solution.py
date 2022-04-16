@@ -4,8 +4,6 @@ import sys
 import struct
 import time
 import select
-import math
-import statistics
 import binascii
 
 ICMP_ECHO_REQUEST = 8
@@ -105,7 +103,8 @@ def ping(host, timeout=1):
         delay = doOnePing(dest, timeout)
         print(delay)
         time.sleep(1)
-    lst = []
+
+    lst = [delay]
 
     packet_min = min(lst)
     packet_max = max(lst)
@@ -113,10 +112,7 @@ def ping(host, timeout=1):
     stdev = statistics.stdev(lst)
 
 
-    for i in lst:
-        stdev += (i - packet_avg) ** 2
-        vars = [str(round(packet_min, 8)), str(round(packet_avg, 8)), str(round(packet_max, 8)),
-                str(round(stdev(stdev_var), 8))]
+
     return vars
 
 
