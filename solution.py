@@ -97,7 +97,7 @@ def ping(host, timeout=1):
     stdev_var = 0
     delay = 0
 
-    lst = []
+    lst = [receiveOnePing]
 
     for i in range(0, 4):
         delay = doOnePing(dest, timeout)
