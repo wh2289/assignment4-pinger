@@ -39,7 +39,6 @@ def receiveOnePing(mySocket, ID, timeout, destAddr):
         startedSelect = time.time()
         whatReady = select.select([mySocket], [], [], timeLeft)
         howLongInSelect = (time.time() - startedSelect)
-        
 
         timeReceived = time.time()
         recPacket, addr = mySocket.recvfrom(1024)
@@ -104,7 +103,7 @@ def ping(host, timeout=1):
     for i in range(0, 4):
         delay = doOnePing(dest, timeout)
         print(delay)
-        lst.append(delay[0])
+        lst.append(lst[delay])
         time.sleep(1)
 
     packet_min = min(lst)
