@@ -104,7 +104,7 @@ def ping(host, timeout=1):
         print(delay)
         lst.append(lst)
         time.sleep(1)
-        lst = lst.append(lst)
+        lst = delay
 
     packet_min = min(lst)
     packet_max = max(lst)
