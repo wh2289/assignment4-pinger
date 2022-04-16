@@ -108,7 +108,7 @@ def ping(host, timeout=1):
 
     packet_min = min(lst)
     packet_max = max(lst)
-    packet_avg = sum(lst) / len(lst)
+    packet_avg = (sum(lst) / len(lst))
     stdev_var = lst
 
 
