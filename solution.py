@@ -98,7 +98,7 @@ def ping(host, timeout=1):
     packet_max = 0
     packet_avg = 0
     stdev_var = 0
-    delay = timeReceived - timeSent
+    delay = 0
 
     lst = [delay]
 
