@@ -9,11 +9,6 @@ import binascii
 
 ICMP_ECHO_REQUEST = 8
 
-packet_min = 0
-packet_max = 0
-packet_avg = 0
-
-
 def checksum(string):
     csum = 0
     countTo = (len(string) // 2) * 2
@@ -104,17 +99,20 @@ def ping(host, timeout=1):
     packet_avg = 0
     stdev_var = 0
 
-    lst = [4,8,10,12]
+    lst = []
 
     for i in range(0, 4):
         delay = doOnePing(dest, timeout)
         print(delay)
+        lst.append(delay[0],2)
         time.sleep(1)
 
-    packet_min = min(lst)
-    packet_max = max(lst)
-    packet_avg = sum(lst) / len(lst)
-    stdev = statistics.stdev(lst)
+        packet_min = min(lst)
+        packet_max = max(lst)
+        packet_avg = sum(lst) / len(lst)
+
+    vars = [str(round(packet_min, 8)), str(round(packet_avg, 8)), str(round(packet_max, 8)),
+            str(round(stdev(stdev_var), 8))]
 
     return vars
 
