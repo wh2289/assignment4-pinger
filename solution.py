@@ -52,9 +52,8 @@ def receiveOnePing(mySocket, ID, timeout, destAddr):
             bytesInDouble = struct.calcsize("d")
             timeSent = struct.unpack("d", recPacket[28:28 + bytesInDouble])[0]
             delay = timeReceived - timeSent
-            ttl = ord(struct.unpack("c", recPacket[8, 9])[0].decode())
 
-            return (delay, ttl, bytesInDouble)
+            return delay
 
         timeLeft = timeLeft - howLongInSelect
 
