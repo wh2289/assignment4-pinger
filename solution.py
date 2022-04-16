@@ -4,6 +4,7 @@ import sys
 import struct
 import time
 import select
+import statistics
 import binascii
 
 ICMP_ECHO_REQUEST = 8
