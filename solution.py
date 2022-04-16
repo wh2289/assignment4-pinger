@@ -97,13 +97,14 @@ def ping(host, timeout=1):
     stdev_var = 0
     delay = 0
 
-    lst = [receiveOnePing]
+    lst = []
 
     for i in range(0, 4):
         delay = doOnePing(dest, timeout)
         print(delay)
         lst.append(lst)
         time.sleep(1)
+        lst = lst.append(lst)
 
     packet_min = min(lst)
     packet_max = max(lst)
