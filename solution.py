@@ -108,15 +108,15 @@ def ping(host, timeout=1):
         lst.append(delay[0])
         time.sleep(1)
 
-packet_min = min(lst)
-packet_max = max(lst)
-packet_avg = sum(lst) / len(lst)
-stdev_var = lst
+    packet_min = min(lst)
+    packet_max = max(lst)
+    packet_avg = sum(lst) / len(lst)
+    stdev_var = lst
 
-vars = [str(round(packet_min, 8)), str(round(packet_avg, 8)), str(round(packet_max, 8)),
+    vars = [str(round(packet_min, 8)), str(round(packet_avg, 8)), str(round(packet_max, 8)),
             str(round(stdev(stdev_var), 8))]
 
-return vars
+    return vars
 
 
 if __name__ == '_main_':
