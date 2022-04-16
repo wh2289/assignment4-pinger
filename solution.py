@@ -98,13 +98,15 @@ def ping(host, timeout=1):
     packet_max = 0
     packet_avg = 0
     stdev_var = 0
-    delay = 0
+    timeReceived = time.time()
+    timeSent = struct.unpack("d", recPacket[28:28 + bytesInDouble])[0]
+    delay = timeReceived - timeSent
 
     lst = [delay]
 
     for i in range(0, 4):
         delay = doOnePing(dest, timeout)
-        #print(delay)
+        print(delay)
         lst.append(delay[0])
         time.sleep(1)
 
