@@ -39,8 +39,7 @@ def receiveOnePing(mySocket, ID, timeout, destAddr):
         startedSelect = time.time()
         whatReady = select.select([mySocket], [], [], timeLeft)
         howLongInSelect = (time.time() - startedSelect)
-        if whatReady[0] == []:
-            return "Request timed out."
+        
 
         timeReceived = time.time()
         recPacket, addr = mySocket.recvfrom(1024)
