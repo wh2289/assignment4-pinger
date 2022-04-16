@@ -99,12 +99,13 @@ def ping(host, timeout=1):
     print("")
 
 
+
+    lst = [delay]
+
     for i in range(0, 4):
         delay = doOnePing(dest, timeout)
         print(delay)
         time.sleep(1)
-
-    lst = [delay]
 
     packet_min = min(lst)
     packet_max = max(lst)
