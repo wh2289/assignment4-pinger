@@ -98,8 +98,6 @@ def ping(host, timeout=1):
     packet_max = 0
     packet_avg = 0
     stdev_var = 0
-    timeReceived = time.time()
-    timeSent = struct.unpack("d", recPacket[28:28 + bytesInDouble])[0]
     delay = timeReceived - timeSent
 
     lst = [delay]
@@ -116,7 +114,7 @@ def ping(host, timeout=1):
     stdev_var = lst
 
     vars = [str(round(packet_min, 8)), str(round(packet_avg, 8)), str(round(packet_max, 8)),
-            str(round(stdev(stdev_var), 8))]
+            str(round(statistics.stdev(stdev_var), 8))]
 
     return vars
 
